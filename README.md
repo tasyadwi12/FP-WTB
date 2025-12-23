@@ -1,83 +1,46 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panduan Menjalankan Program PHP + SQL</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
-        code, pre {
-            background-color: #ecf0f1;
-            padding: 5px;
-            border-radius: 5px;
-            display: block;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        section {
-            background-color: #fff;
-            padding: 15px 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        ul {
-            margin-left: 20px;
-        }
-    </style>
-</head>
-<body>
+# 🚀 Panduan Menjalankan Program PHP + SQL
 
-    <h1>Panduan Menjalankan Program PHP + SQL</h1>
+Selamat datang! 🎉  
+Panduan ini akan membantu kamu menjalankan project **PHP murni** dengan **database SQL** secara mudah.
 
-    <section>
-        <h2>1. Persiapan Lingkungan</h2>
-        <p>Sebelum menjalankan program, pastikan lingkungan sudah siap:</p>
-        <h3>A. Install Web Server</h3>
-        <ul>
-            <li>Gunakan XAMPP, Laragon, atau WAMP.</li>
-            <li>Pastikan <strong>Apache</strong> dan <strong>MySQL</strong> berjalan.</li>
-        </ul>
-        <h3>B. Siapkan Folder Project</h3>
-        <ul>
-            <li>Letakkan folder project di <code>htdocs</code> (XAMPP) atau <code>www</code> (Laragon).</li>
-            <li>Contoh: <code>C:\xampp\htdocs\project-php</code></li>
-        </ul>
-    </section>
+---
 
-    <section>
-        <h2>2. Setup Database</h2>
-        <h3>A. Buat Database</h3>
-        <ul>
-            <li>Buka <strong>phpMyAdmin</strong> (<code>http://localhost/phpmyadmin</code>).</li>
-            <li>Klik <strong>New</strong>, beri nama database misal <code>db_project</code>, lalu <strong>Create</strong>.</li>
-        </ul>
-        <h3>B. Buat Tabel</h3>
-        <pre>
+## 1️⃣ Persiapan Lingkungan
+
+### 🔹 Install Web Server
+- 🖥️ Gunakan **XAMPP**, **Laragon**, atau **WAMP**
+- ✅ Pastikan **Apache** dan **MySQL** hidup
+
+### 🔹 Siapkan Folder Project
+- 📂 Letakkan project di:
+  - `htdocs` (XAMPP)
+  - `www` (Laragon)
+- Contoh: `C:\xampp\htdocs\project-php`
+
+---
+
+## 2️⃣ Setup Database
+
+### 🔹 Buat Database
+1. 🌐 Buka [phpMyAdmin](http://localhost/phpmyadmin)
+2. ➕ Klik **New** → beri nama database `db_project` → **Create**
+
+### 🔹 Buat Tabel
+```sql
 CREATE TABLE users (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
     password VARCHAR(255) NOT NULL
 );
-        </pre>
-        <h3>C. Import Data (Opsional)</h3>
-        <ul>
-            <li>Jika ada file SQL siap pakai, klik <strong>Import</strong> → pilih file `.sql` → klik <strong>Go</strong>.</li>
-        </ul>
-    </section>
+🔹 Import Data (Opsional)
+📤 Jika ada file .sql, klik Import → pilih file → Go
 
-    <section>
-        <h2>3. Konfigurasi Koneksi Database</h2>
-        <pre>
-&lt;?php
+3️⃣ Konfigurasi Koneksi Database
+Buat file config.php:
+
+php
+Copy code
+<?php
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -88,37 +51,30 @@ $conn = mysqli_connect($host, $user, $pass, $db);
 if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
-?&gt;
-        </pre>
-    </section>
+?>
+💡 Pastikan nama database, user, dan password sesuai setup lokal
 
-    <section>
-        <h2>4. Menjalankan Backend</h2>
-        <ul>
-            <li>Pastikan <strong>Apache & MySQL</strong> berjalan.</li>
-            <li>Akses project di browser: <code>http://localhost/project-php/</code></li>
-        </ul>
-    </section>
+4️⃣ Menjalankan Backend
+🚀 Pastikan Apache & MySQL berjalan
 
-    <section>
-        <h2>5. Menjalankan Frontend</h2>
-        <ul>
-            <li>Frontend HTML/CSS/JS bisa diakses melalui browser: <code>http://localhost/project-php/index.php</code></li>
-            <li>Form akan berinteraksi dengan backend via POST atau AJAX.</li>
-        </ul>
-        <pre>
-&lt;form action="login.php" method="POST"&gt;
-    Username: &lt;input type="text" name="username"&gt;&lt;br&gt;
-    Password: &lt;input type="password" name="password"&gt;&lt;br&gt;
-    &lt;button type="submit"&gt;Login&lt;/button&gt;
-&lt;/form&gt;
-        </pre>
-    </section>
+🌐 Akses di browser: http://localhost/project-php/
 
-    <section>
-        <h2>6. Contoh Query PHP + SQL</h2>
-        <pre>
-&lt;?php
+5️⃣ Menjalankan Frontend
+🌟 Frontend HTML/CSS/JS: http://localhost/project-php/index.php
+
+Contoh form login:
+
+html
+Copy code
+<form action="login.php" method="POST">
+    Username: <input type="text" name="username"><br>
+    Password: <input type="password" name="password"><br>
+    <button type="submit">Login</button>
+</form>
+6️⃣ Contoh Query PHP + SQL
+php
+Copy code
+<?php
 include 'config.php';
 
 if(isset($_POST['username']) && isset($_POST['password'])){
@@ -128,30 +84,23 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
     $result = mysqli_query($conn, $sql);
 
-    if(mysqli_num_rows($result) &gt; 0){
-        echo "Login berhasil!";
+    if(mysqli_num_rows($result) > 0){
+        echo "Login berhasil! 🎉";
     } else {
-        echo "Username atau password salah!";
+        echo "Username atau password salah ❌";
     }
 }
-?&gt;
-        </pre>
-    </section>
+?>
+7️⃣ Tips Debugging
+🔧 Pastikan Apache & MySQL hidup
 
-    <section>
-        <h2>7. Tips Debugging</h2>
-        <ul>
-            <li>Pastikan Apache & MySQL hidup.</li>
-            <li>Cek URL sesuai folder project.</li>
-            <li>Aktifkan error reporting di PHP:
-                <pre>
+🌐 Cek URL sesuai folder project
+
+⚡ Aktifkan error reporting di PHP:
+
+php
+Copy code
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-                </pre>
-            </li>
-            <li>Gunakan phpMyAdmin untuk memeriksa data di database.</li>
-        </ul>
-    </section>
+🧾 Gunakan phpMyAdmin untuk memeriksa data
 
-</body>
-</html>

@@ -1,0 +1,14 @@
+# ENV
+.env
+
+# Vendor (kalau pakai composer)
+vendor/
+
+# Cache / logs
+*.log
+/tmp
+/cache
+
+# OS files
+.DS_Store
+Thumbs.db
